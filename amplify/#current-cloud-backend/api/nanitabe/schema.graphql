@@ -1,0 +1,9 @@
+type Meals @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  meal: String
+  image_url: String
+  comment: String
+  posted_date: AWSDateTime
+  posted_by: String
+}
+ 

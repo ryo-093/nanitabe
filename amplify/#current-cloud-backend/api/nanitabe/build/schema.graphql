@@ -1,0 +1,248 @@
+
+type Meals @aws_iam @aws_api_key {
+  id: ID!
+  meal: String
+  image_url: String
+  comment: String
+  posted_date: AWSDateTime
+  posted_by: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelMealsConnection @aws_api_key @aws_iam {
+  items: [Meals]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelMealsFilterInput {
+  id: ModelIDInput
+  meal: ModelStringInput
+  image_url: ModelStringInput
+  comment: ModelStringInput
+  posted_date: ModelStringInput
+  posted_by: ModelStringInput
+  and: [ModelMealsFilterInput]
+  or: [ModelMealsFilterInput]
+  not: ModelMealsFilterInput
+}
+
+type Query {
+  getMeals(id: ID!): Meals @aws_api_key @aws_iam
+  listMeals(filter: ModelMealsFilterInput, limit: Int, nextToken: String): ModelMealsConnection @aws_api_key @aws_iam
+  syncMeals(filter: ModelMealsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelMealsConnection @aws_api_key @aws_iam
+}
+
+input ModelMealsConditionInput {
+  meal: ModelStringInput
+  image_url: ModelStringInput
+  comment: ModelStringInput
+  posted_date: ModelStringInput
+  posted_by: ModelStringInput
+  and: [ModelMealsConditionInput]
+  or: [ModelMealsConditionInput]
+  not: ModelMealsConditionInput
+}
+
+input CreateMealsInput {
+  id: ID
+  meal: String
+  image_url: String
+  comment: String
+  posted_date: AWSDateTime
+  posted_by: String
+  _version: Int
+}
+
+input UpdateMealsInput {
+  id: ID!
+  meal: String
+  image_url: String
+  comment: String
+  posted_date: AWSDateTime
+  posted_by: String
+  _version: Int
+}
+
+input DeleteMealsInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createMeals(input: CreateMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
+  updateMeals(input: UpdateMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
+  deleteMeals(input: DeleteMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionMealsFilterInput {
+  id: ModelSubscriptionIDInput
+  meal: ModelSubscriptionStringInput
+  image_url: ModelSubscriptionStringInput
+  comment: ModelSubscriptionStringInput
+  posted_date: ModelSubscriptionStringInput
+  posted_by: ModelSubscriptionStringInput
+  and: [ModelSubscriptionMealsFilterInput]
+  or: [ModelSubscriptionMealsFilterInput]
+}
+
+type Subscription {
+  onCreateMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["createMeals"]) @aws_api_key @aws_iam
+  onUpdateMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["updateMeals"]) @aws_api_key @aws_iam
+  onDeleteMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["deleteMeals"]) @aws_api_key @aws_iam
+}
+
