@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "nanitabe",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-nanitabe-staging-100654-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/836d9ee7c10f88b2293535d2cf66692a0669811b"
+}

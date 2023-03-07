@@ -1,0 +1,24 @@
+type Users @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userName: String
+  iconUrl: String
+  Sells: [Sells] @hasMany(indexName: "byUsers", fields: ["id"])
+}
+
+type Sells @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  goodsName: String
+  comment: String
+  howPickup: String
+  PickupPlace: String
+  price: Int
+  usernName: String
+  createdBy: AWSDateTime
+  imageUrl1: String!
+  imageUrl2: String
+  imageUrl3: String
+  imageUrl4: String
+  imageUrl5: String
+  usersID: ID! @index(name: "byUsers")
+}
+ 

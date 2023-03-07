@@ -1,12 +1,15 @@
-import { useNavigate } from "react-router-dom"
+import {
+    TimelineCardCollection
+} from './../ui-components';
 
 const ComponentB = () => {
-    const navigate = useNavigate()
     return (
-        <div>
-            <p>componentB!!!</p>
-            <button onClick={() => navigate('/')}>もどる</button>
-        </div>
+        <body>
+            <div>
+                <h1>マイページ</h1>
+                <TimelineCardCollection alignItems="center"/>
+            </div>
+        </body>
     )
 }
 export default ComponentB

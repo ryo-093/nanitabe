@@ -1,0 +1,12 @@
+const pnFoods = () => {
+    //テスト用
+    const position = [35.688041, 139.6913238];
+
+    <Marker position={position}>
+        <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+    </Marker>
+};
+
+export default pnFoods;

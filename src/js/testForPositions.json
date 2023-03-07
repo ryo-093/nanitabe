@@ -1,0 +1,16 @@
+[
+    {
+        "food": "人参",
+        "amount": 200,
+        "comment": "朝どれにんじん",
+        "position": [35.688041, 139.6913238],
+        "imageUrl":"https://st.depositphotos.com/1002351/1628/i/600/depositphotos_16285737-stock-photo-carrot-vegetable-with-leaves.jpg"
+    },
+    {
+        "food": "だいこん",
+        "amount": 20,
+        "comment": "一昨日取れただいこん",
+        "position": [35.6936934,139.6886055],
+        "imageUrl":"https://chefgohan.gnavi.co.jp/static/food/img/sp_img_food_detail_japanese_radish.jpg"
+    }
+]

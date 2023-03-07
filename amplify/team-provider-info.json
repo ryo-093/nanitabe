@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nanitabe-staging-100654-authRole",
+      "UnauthRoleArn": "arn:aws:iam::019408459152:role/amplify-nanitabe-staging-100654-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::019408459152:role/amplify-nanitabe-staging-100654-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-nanitabe-staging-100654-deployment",
+      "UnauthRoleName": "amplify-nanitabe-staging-100654-unauthRole",
+      "StackName": "amplify-nanitabe-staging-100654",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:019408459152:stack/amplify-nanitabe-staging-100654/f5f01de0-b8e1-11ed-81c9-06b9e9dead55",
+      "AmplifyAppId": "d1spfr9n6dhg3t"
+    }
+  }
+}

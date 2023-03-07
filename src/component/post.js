@@ -1,12 +1,16 @@
-import { useNavigate } from "react-router-dom"
+import {
+    SellForm2 
+   } from './../ui-components';
 
 const ComponentD = () => {
-    const navigate = useNavigate()
     return (
-        <div>
-            <p>投稿する</p>
-            <button onClick={() => navigate('/')}>戻る</button>
-        </div>
+        <body>
+            <h1>出品</h1>
+            <div style={{textAlign: "left"}}>
+                <SellForm2 width={"100vw"}/>
+            </div>
+
+        </body>
     )
 }
 export default ComponentD
