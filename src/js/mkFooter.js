@@ -8,6 +8,7 @@ function mkFooter() {
   return (
     <footer className='footer' >
         <Footer3 width={"100vw"}/>
+
     </footer>
   );
 }

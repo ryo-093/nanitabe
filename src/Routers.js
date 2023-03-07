@@ -1,3 +1,4 @@
+// こいつを廃止にしたい
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ComponentA from "./component/helloNanitabe";
 import ComponentB from "./component/timeline";
@@ -14,6 +15,7 @@ const Routers = () => {
                 <Route path="/" element={<ComponentA/>}/>
                 <Route path="/timeline" element={<ComponentB/>}/>
                 <Route path="/map" element={<ComponentC/>}/>
+                {/* <Route path="/" element={<ComponentC/>}/> */}
                 <Route path="/post" element={<ComponentD/>}/>
                 <Route path="/chat" element={<ComponentE/>}/>
                 <Route path="/mypage" element={<ComponentF/>}/>
