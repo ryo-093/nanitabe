@@ -1,11 +1,31 @@
 
-type Meals @aws_iam @aws_api_key {
+type Users @aws_iam @aws_api_key {
   id: ID!
-  meal: String
-  image_url: String
+  userName: String
+  iconUrl: String
+  Sells(filter: ModelSellsFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelSellsConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Sells @aws_iam @aws_api_key {
+  id: ID!
+  goodsName: String
   comment: String
-  posted_date: AWSDateTime
-  posted_by: String
+  howPickup: String
+  PickupPlace: String
+  price: Int
+  usernName: String
+  createdBy: AWSDateTime
+  imageUrl1: String!
+  imageUrl2: String
+  imageUrl3: String
+  imageUrl4: String
+  imageUrl5: String
+  usersID: ID!
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -163,86 +183,186 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelMealsConnection @aws_api_key @aws_iam {
-  items: [Meals]!
+type ModelUsersConnection @aws_api_key @aws_iam {
+  items: [Users]!
   nextToken: String
   startedAt: AWSTimestamp
 }
 
-input ModelMealsFilterInput {
+input ModelUsersFilterInput {
   id: ModelIDInput
-  meal: ModelStringInput
-  image_url: ModelStringInput
-  comment: ModelStringInput
-  posted_date: ModelStringInput
-  posted_by: ModelStringInput
-  and: [ModelMealsFilterInput]
-  or: [ModelMealsFilterInput]
-  not: ModelMealsFilterInput
+  userName: ModelStringInput
+  iconUrl: ModelStringInput
+  and: [ModelUsersFilterInput]
+  or: [ModelUsersFilterInput]
+  not: ModelUsersFilterInput
 }
 
 type Query {
-  getMeals(id: ID!): Meals @aws_api_key @aws_iam
-  listMeals(filter: ModelMealsFilterInput, limit: Int, nextToken: String): ModelMealsConnection @aws_api_key @aws_iam
-  syncMeals(filter: ModelMealsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelMealsConnection @aws_api_key @aws_iam
+  getUsers(id: ID!): Users @aws_api_key @aws_iam
+  listUsers(filter: ModelUsersFilterInput, limit: Int, nextToken: String): ModelUsersConnection @aws_api_key @aws_iam
+  syncUsers(filter: ModelUsersFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUsersConnection @aws_api_key @aws_iam
+  getSells(id: ID!): Sells @aws_api_key @aws_iam
+  listSells(filter: ModelSellsFilterInput, limit: Int, nextToken: String): ModelSellsConnection @aws_api_key @aws_iam
+  syncSells(filter: ModelSellsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelSellsConnection @aws_api_key @aws_iam
+  sellsByUsersID(usersID: ID!, sortDirection: ModelSortDirection, filter: ModelSellsFilterInput, limit: Int, nextToken: String): ModelSellsConnection @aws_api_key @aws_iam
 }
 
-input ModelMealsConditionInput {
-  meal: ModelStringInput
-  image_url: ModelStringInput
-  comment: ModelStringInput
-  posted_date: ModelStringInput
-  posted_by: ModelStringInput
-  and: [ModelMealsConditionInput]
-  or: [ModelMealsConditionInput]
-  not: ModelMealsConditionInput
+input ModelUsersConditionInput {
+  userName: ModelStringInput
+  iconUrl: ModelStringInput
+  and: [ModelUsersConditionInput]
+  or: [ModelUsersConditionInput]
+  not: ModelUsersConditionInput
 }
 
-input CreateMealsInput {
+input CreateUsersInput {
   id: ID
-  meal: String
-  image_url: String
-  comment: String
-  posted_date: AWSDateTime
-  posted_by: String
+  userName: String
+  iconUrl: String
   _version: Int
 }
 
-input UpdateMealsInput {
+input UpdateUsersInput {
   id: ID!
-  meal: String
-  image_url: String
-  comment: String
-  posted_date: AWSDateTime
-  posted_by: String
+  userName: String
+  iconUrl: String
   _version: Int
 }
 
-input DeleteMealsInput {
+input DeleteUsersInput {
   id: ID!
   _version: Int
 }
 
 type Mutation {
-  createMeals(input: CreateMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
-  updateMeals(input: UpdateMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
-  deleteMeals(input: DeleteMealsInput!, condition: ModelMealsConditionInput): Meals @aws_api_key @aws_iam
+  createUsers(input: CreateUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  updateUsers(input: UpdateUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  deleteUsers(input: DeleteUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  createSells(input: CreateSellsInput!, condition: ModelSellsConditionInput): Sells @aws_api_key @aws_iam
+  updateSells(input: UpdateSellsInput!, condition: ModelSellsConditionInput): Sells @aws_api_key @aws_iam
+  deleteSells(input: DeleteSellsInput!, condition: ModelSellsConditionInput): Sells @aws_api_key @aws_iam
 }
 
-input ModelSubscriptionMealsFilterInput {
+input ModelSubscriptionUsersFilterInput {
   id: ModelSubscriptionIDInput
-  meal: ModelSubscriptionStringInput
-  image_url: ModelSubscriptionStringInput
-  comment: ModelSubscriptionStringInput
-  posted_date: ModelSubscriptionStringInput
-  posted_by: ModelSubscriptionStringInput
-  and: [ModelSubscriptionMealsFilterInput]
-  or: [ModelSubscriptionMealsFilterInput]
+  userName: ModelSubscriptionStringInput
+  iconUrl: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUsersFilterInput]
+  or: [ModelSubscriptionUsersFilterInput]
 }
 
 type Subscription {
-  onCreateMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["createMeals"]) @aws_api_key @aws_iam
-  onUpdateMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["updateMeals"]) @aws_api_key @aws_iam
-  onDeleteMeals(filter: ModelSubscriptionMealsFilterInput): Meals @aws_subscribe(mutations: ["deleteMeals"]) @aws_api_key @aws_iam
+  onCreateUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["createUsers"]) @aws_api_key @aws_iam
+  onUpdateUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["updateUsers"]) @aws_api_key @aws_iam
+  onDeleteUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["deleteUsers"]) @aws_api_key @aws_iam
+  onCreateSells(filter: ModelSubscriptionSellsFilterInput): Sells @aws_subscribe(mutations: ["createSells"]) @aws_api_key @aws_iam
+  onUpdateSells(filter: ModelSubscriptionSellsFilterInput): Sells @aws_subscribe(mutations: ["updateSells"]) @aws_api_key @aws_iam
+  onDeleteSells(filter: ModelSubscriptionSellsFilterInput): Sells @aws_subscribe(mutations: ["deleteSells"]) @aws_api_key @aws_iam
+}
+
+type ModelSellsConnection @aws_iam @aws_api_key {
+  items: [Sells]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelSellsFilterInput {
+  id: ModelIDInput
+  goodsName: ModelStringInput
+  comment: ModelStringInput
+  howPickup: ModelStringInput
+  PickupPlace: ModelStringInput
+  price: ModelIntInput
+  usernName: ModelStringInput
+  createdBy: ModelStringInput
+  imageUrl1: ModelStringInput
+  imageUrl2: ModelStringInput
+  imageUrl3: ModelStringInput
+  imageUrl4: ModelStringInput
+  imageUrl5: ModelStringInput
+  usersID: ModelIDInput
+  and: [ModelSellsFilterInput]
+  or: [ModelSellsFilterInput]
+  not: ModelSellsFilterInput
+}
+
+input ModelSellsConditionInput {
+  goodsName: ModelStringInput
+  comment: ModelStringInput
+  howPickup: ModelStringInput
+  PickupPlace: ModelStringInput
+  price: ModelIntInput
+  usernName: ModelStringInput
+  createdBy: ModelStringInput
+  imageUrl1: ModelStringInput
+  imageUrl2: ModelStringInput
+  imageUrl3: ModelStringInput
+  imageUrl4: ModelStringInput
+  imageUrl5: ModelStringInput
+  usersID: ModelIDInput
+  and: [ModelSellsConditionInput]
+  or: [ModelSellsConditionInput]
+  not: ModelSellsConditionInput
+}
+
+input CreateSellsInput {
+  id: ID
+  goodsName: String
+  comment: String
+  howPickup: String
+  PickupPlace: String
+  price: Int
+  usernName: String
+  createdBy: AWSDateTime
+  imageUrl1: String!
+  imageUrl2: String
+  imageUrl3: String
+  imageUrl4: String
+  imageUrl5: String
+  usersID: ID!
+  _version: Int
+}
+
+input UpdateSellsInput {
+  id: ID!
+  goodsName: String
+  comment: String
+  howPickup: String
+  PickupPlace: String
+  price: Int
+  usernName: String
+  createdBy: AWSDateTime
+  imageUrl1: String
+  imageUrl2: String
+  imageUrl3: String
+  imageUrl4: String
+  imageUrl5: String
+  usersID: ID
+  _version: Int
+}
+
+input DeleteSellsInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionSellsFilterInput {
+  id: ModelSubscriptionIDInput
+  goodsName: ModelSubscriptionStringInput
+  comment: ModelSubscriptionStringInput
+  howPickup: ModelSubscriptionStringInput
+  PickupPlace: ModelSubscriptionStringInput
+  price: ModelSubscriptionIntInput
+  usernName: ModelSubscriptionStringInput
+  createdBy: ModelSubscriptionStringInput
+  imageUrl1: ModelSubscriptionStringInput
+  imageUrl2: ModelSubscriptionStringInput
+  imageUrl3: ModelSubscriptionStringInput
+  imageUrl4: ModelSubscriptionStringInput
+  imageUrl5: ModelSubscriptionStringInput
+  usersID: ModelSubscriptionIDInput
+  and: [ModelSubscriptionSellsFilterInput]
+  or: [ModelSubscriptionSellsFilterInput]
 }
 

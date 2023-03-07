@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import {
   Flex,
   Icon,
@@ -17,6 +20,11 @@ import {
 } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
+  const dashboardOnClick = useNavigateAction({
+    type: "url",
+    url: "./timeline",
+  });
+  const imageOnClick = useNavigateAction({ type: "url", url: "./map" });
   return (
     <Flex
       gap="20px"
@@ -120,6 +128,9 @@ export default function NavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Dashboard"
+          onClick={() => {
+            dashboardOnClick();
+          }}
           {...getOverrideProps(overrides, "Dashboard")}
         ></Text>
         <Text
@@ -262,6 +273,9 @@ export default function NavBar(props) {
           borderRadius="160px"
           padding="0px 0px 0px 0px"
           objectFit="cover"
+          onClick={() => {
+            imageOnClick();
+          }}
           {...getOverrideProps(overrides, "image")}
         ></Image>
       </Flex>

@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom"
-
-import MapArea from "./mapArea";
+import MapArea from "../js/mapArea";
 
 const ComponentC = () => {
-    const navigate = useNavigate()
     return (
-        <div>
-            <p>マップ</p>
-            <MapArea />
-            <button onClick={() => navigate('/')}>戻る</button>
-        </div>
+        <body>
+            <div>
+                <h1>マップ</h1>
+                <MapArea />
+            </div>
+        </body>
     )
 }
 export default ComponentC

@@ -11,16 +11,17 @@ import awsconfig from './aws-exports';
 import "@aws-amplify/ui-react/styles.css";
 import { studioTheme } from "./ui-components";
 
+import Footer from './js/mkFooter';
+
 Amplify.configure(awsconfig);
 
 // この部分でAppからDOM生成してrootを指定
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
   <ThemeProvider theme={studioTheme}>
     <App />
+    <Footer />
   </ThemeProvider>
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

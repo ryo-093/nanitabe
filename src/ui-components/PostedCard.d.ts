@@ -5,7 +5,6 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Meals } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -21,8 +20,6 @@ export declare type PostedCardOverridesProps = {
     image?: PrimitiveOverrideProps<ImageProps>;
 } & EscapeHatchProps;
 export declare type PostedCardProps = React.PropsWithChildren<Partial<ViewProps> & {
-    meals?: Meals;
-} & {
     overrides?: PostedCardOverridesProps | undefined | null;
 }>;
 export default function PostedCard(props: PostedCardProps): React.ReactElement;

@@ -4,10 +4,13 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
+export { default as PostedCard } from "./PostedCard";
+export { default as SellForm2 } from "./SellForm2";
 export { default as StandardCard } from "./StandardCard";
 export { default as ActionCard } from "./ActionCard";
 export { default as HeroLayout4 } from "./HeroLayout4";
 export { default as FormCheckout } from "./FormCheckout";
+export { default as TimelineCardCollection } from "./TimelineCardCollection";
 export { default as SocialPost } from "./SocialPost";
 export { default as MarketingPricing } from "./MarketingPricing";
 export { default as HeroLayout3 } from "./HeroLayout3";
@@ -15,26 +18,29 @@ export { default as FAQItem } from "./FAQItem";
 export { default as ItemCard } from "./ItemCard";
 export { default as MyIcon } from "./MyIcon";
 export { default as ProductDetail } from "./ProductDetail";
-export { default as Timeline } from "./Timeline";
+export { default as TimelineCard } from "./TimelineCard";
+export { default as SellForm } from "./SellForm";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as ContactUs } from "./ContactUs";
 export { default as NavBar } from "./NavBar";
 export { default as CommentCard } from "./CommentCard";
 export { default as MarketingFooter } from "./MarketingFooter";
-export { default as PostedCard } from "./PostedCard";
+export { default as Footer2 } from "./Footer2";
 export { default as Ampligram } from "./Ampligram";
 export { default as FeaturesText2x2 } from "./FeaturesText2x2";
-export { default as Fooder } from "./Fooder";
+export { default as Footer } from "./Footer";
 export { default as EditProfile } from "./EditProfile";
 export { default as Features2x3 } from "./Features2x3";
 export { default as TallCard } from "./TallCard";
 export { default as Features2x2 } from "./Features2x2";
 export { default as HeroLayout1 } from "./HeroLayout1";
 export { default as ReviewCard } from "./ReviewCard";
+export { default as Footer3 } from "./Footer3";
 export { default as HeroLayout2 } from "./HeroLayout2";
 export { default as Features4x1 } from "./Features4x1";
 export { default as SideBar } from "./SideBar";
+export { default as ChatButton } from "./ChatButton";
 export { default as ProductCard } from "./ProductCard";
 export { default as studioTheme } from "./studioTheme";
-export { default as MealsCreateForm } from "./MealsCreateForm";
-export { default as MealsUpdateForm } from "./MealsUpdateForm";
+export { default as UsersCreateForm } from "./UsersCreateForm";
+export { default as UsersUpdateForm } from "./UsersUpdateForm";

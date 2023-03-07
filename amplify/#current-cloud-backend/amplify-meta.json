@@ -36,12 +36,12 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-03-03T02:32:20.111Z",
+      "lastPushTimeStamp": "2023-03-05T02:38:30.614Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-nanitabe-staging-100654-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apinanitabe"
       },
-      "lastPushDirHash": "OVXH4SN6uDZ/kj7HYkiWI5ZgDoY="
+      "lastPushDirHash": "Wt/mxUCXoRSghEmN5bucMSu+he8="
     }
   }
 }

@@ -9,7 +9,7 @@ import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Image, Text, View } from "@aws-amplify/ui-react";
 export default function PostedCard(props) {
-  const { meals, overrides, ...rest } = props;
+  const { overrides, ...rest } = props;
   return (
     <View
       width="400px"
@@ -75,7 +75,7 @@ export default function PostedCard(props) {
         right="3.5%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={meals?.comment}
+        children="駅前のラーメン店で食べました。特に味噌がすきです。"
         {...getOverrideProps(
           overrides,
           "\u99C5\u524D\u306E\u30E9\u30FC\u30E1\u30F3\u5E97\u3067\u98DF\u3079\u307E\u3057\u305F\u3002\u7279\u306B\u5473\u564C\u304C\u3059\u304D\u3067\u3059\u3002"
@@ -129,7 +129,7 @@ export default function PostedCard(props) {
         right="28.25%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={meals?.posted_by}
+        children="わや（20代男性・大学院生）"
         {...getOverrideProps(
           overrides,
           "\u308F\u3084\uFF0820\u4EE3\u7537\u6027\u30FB\u5927\u5B66\u9662\u751F\uFF09"
@@ -156,7 +156,7 @@ export default function PostedCard(props) {
         right="4.25%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={meals?.posted_date}
+        children="2023 / 2 / 22  17:06"
         {...getOverrideProps(overrides, "2023 / 2 / 22 17:06")}
       ></Text>
       <Text
@@ -181,7 +181,7 @@ export default function PostedCard(props) {
         right="4.5%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={meals?.meal}
+        children="ラーメン"
         {...getOverrideProps(overrides, "\u30E9\u30FC\u30E1\u30F3")}
       ></Text>
       <Image
@@ -199,7 +199,6 @@ export default function PostedCard(props) {
         borderRadius="8px"
         padding="0px 0px 0px 0px"
         objectFit="cover"
-        src={meals?.image_url}
         {...getOverrideProps(overrides, "image")}
       ></Image>
     </View>
