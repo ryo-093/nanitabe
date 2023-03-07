@@ -14,7 +14,7 @@ import { Flex, Text, View } from "@aws-amplify/ui-react";
 export default function Footer3(props) {
   const { overrides, ...rest } = props;
   const timelineOnClick = useNavigateAction({ type: "url", url: "./timeline" });
-  const mapOnClick = useNavigateAction({ type: "url", url: "./map" });
+  const mapOnClick = useNavigateAction({ type: "url", url: "./" });
   const postOnClick = useNavigateAction({ type: "url", url: "./post" });
   const chatOnClick = useNavigateAction({ type: "url", url: "./chat" });
   const mypageOnClick = useNavigateAction({ type: "url", url: "./mypage" });

@@ -23,11 +23,11 @@
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
               "description": "api key description"
-            }
+            },
+            "authenticationType": "API_KEY"
           }
         },
         "GraphQLAPIIdOutput": "4dixeiloanezzb6nomtzsb3qha",
@@ -36,7 +36,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-03-07T08:47:57.426Z",
+      "lastPushTimeStamp": "2023-03-07T12:16:21.064Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-nanitabe-staging-100654-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apinanitabe"

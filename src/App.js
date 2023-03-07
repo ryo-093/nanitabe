@@ -17,10 +17,10 @@ function App() {
     <div className="App">
       <Routes>
           {/* <Route path="/" element={<ComponentA/>}/> */}
-          <Route index element={<ComponentA/>}/>
+          {/* <Route index element={<ComponentA/>}/> */}
           <Route path="/timeline" element={<ComponentB/>}/>
-          <Route path="/map" element={<ComponentC/>}/>
-          {/* <Route path="/" element={<ComponentC/>}/> */}
+          {/* <Route path="/map" element={<ComponentC/>}/> */}
+          <Route path="/" element={<ComponentC/>}/>
           <Route path="/post" element={<ComponentD/>}/>
           <Route path="/chat" element={<ComponentE/>}/>
           <Route path="/mypage" element={<ComponentF/>}/>
