@@ -21,10 +21,10 @@ function App() {
           <Route path="/timeline" element={<ComponentB/>}/>
           {/* <Route path="/map" element={<ComponentC/>}/> */}
           <Route path="/" element={<ComponentC/>}/>
-          <Route path="/post" element={<ComponentD/>}/>
-          <Route path="/chat" element={<ComponentE/>}/>
-          <Route path="/mypage" element={<ComponentF/>}/>
-          <Route path="/detail" element={<ComponentG/>}/>
+          <Route path="post" element={<ComponentD/>}/>
+          <Route path="chat" element={<ComponentE/>}/>
+          <Route path="mypage" element={<ComponentF/>}/>
+          <Route path="detail" element={<ComponentG/>}/>
       </Routes>
       <Footer />
     </div>
