@@ -1,6 +1,12 @@
 import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
 import L from 'leaflet';
 
+import { useSearchParams } from "react-router-dom";
+import { DataStore } from '@aws-amplify/datastore';
+import { UserTable } from './../models';
+
+import {useState, useEffect} from 'react';
+
 function defCustomMarker(imageUrl){
     const customMarker = new L.Icon({
         shadowUrl: null,
@@ -14,6 +20,30 @@ function defCustomMarker(imageUrl){
 }
 
 const MapArea = () => {
+    const [searchParams] = useSearchParams();
+    const getNickname = searchParams.get("name");
+
+    console.log('Hello')
+    console.log(getNickname);
+
+    const [list, setList] = useState([]);
+
+    const fetchData = async() => {
+        // const res = (await DataStore.query(UserTable)).filter(c => c.nickname === getNickname);
+        const res = (await DataStore.query(UserTable));
+        setList(res)
+        console.log(res)
+    };
+
+    useEffect( ()=> {
+        fetchData()
+    }, []);
+
+    // if (document.getElementById('address').value) {
+    //     getLatLng(document.getElementById('address').value, (latlng) => {
+    //       map.setCenter(latlng)
+    //     })
+    // }
     // とりあえず都庁
     const position = [35.689634, 139.692101]; 
     //テスト用

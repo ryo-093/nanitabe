@@ -26,9 +26,15 @@ export default function UsersUpdateForm(props) {
   const initialValues = {
     userName: "",
     iconUrl: "",
+    currentAddress: "",
+    nickname: "",
   };
   const [userName, setUserName] = React.useState(initialValues.userName);
   const [iconUrl, setIconUrl] = React.useState(initialValues.iconUrl);
+  const [currentAddress, setCurrentAddress] = React.useState(
+    initialValues.currentAddress
+  );
+  const [nickname, setNickname] = React.useState(initialValues.nickname);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = usersRecord
@@ -36,6 +42,8 @@ export default function UsersUpdateForm(props) {
       : initialValues;
     setUserName(cleanValues.userName);
     setIconUrl(cleanValues.iconUrl);
+    setCurrentAddress(cleanValues.currentAddress);
+    setNickname(cleanValues.nickname);
     setErrors({});
   };
   const [usersRecord, setUsersRecord] = React.useState(users);
@@ -50,6 +58,8 @@ export default function UsersUpdateForm(props) {
   const validations = {
     userName: [],
     iconUrl: [],
+    currentAddress: [],
+    nickname: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -79,6 +89,8 @@ export default function UsersUpdateForm(props) {
         let modelFields = {
           userName,
           iconUrl,
+          currentAddress,
+          nickname,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -136,6 +148,8 @@ export default function UsersUpdateForm(props) {
             const modelFields = {
               userName: value,
               iconUrl,
+              currentAddress,
+              nickname,
             };
             const result = onChange(modelFields);
             value = result?.userName ?? value;
@@ -161,6 +175,8 @@ export default function UsersUpdateForm(props) {
             const modelFields = {
               userName,
               iconUrl: value,
+              currentAddress,
+              nickname,
             };
             const result = onChange(modelFields);
             value = result?.iconUrl ?? value;
@@ -174,6 +190,60 @@ export default function UsersUpdateForm(props) {
         errorMessage={errors.iconUrl?.errorMessage}
         hasError={errors.iconUrl?.hasError}
         {...getOverrideProps(overrides, "iconUrl")}
+      ></TextField>
+      <TextField
+        label="Current address"
+        isRequired={false}
+        isReadOnly={false}
+        value={currentAddress}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              userName,
+              iconUrl,
+              currentAddress: value,
+              nickname,
+            };
+            const result = onChange(modelFields);
+            value = result?.currentAddress ?? value;
+          }
+          if (errors.currentAddress?.hasError) {
+            runValidationTasks("currentAddress", value);
+          }
+          setCurrentAddress(value);
+        }}
+        onBlur={() => runValidationTasks("currentAddress", currentAddress)}
+        errorMessage={errors.currentAddress?.errorMessage}
+        hasError={errors.currentAddress?.hasError}
+        {...getOverrideProps(overrides, "currentAddress")}
+      ></TextField>
+      <TextField
+        label="Nickname"
+        isRequired={false}
+        isReadOnly={false}
+        value={nickname}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              userName,
+              iconUrl,
+              currentAddress,
+              nickname: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.nickname ?? value;
+          }
+          if (errors.nickname?.hasError) {
+            runValidationTasks("nickname", value);
+          }
+          setNickname(value);
+        }}
+        onBlur={() => runValidationTasks("nickname", nickname)}
+        errorMessage={errors.nickname?.errorMessage}
+        hasError={errors.nickname?.hasError}
+        {...getOverrideProps(overrides, "nickname")}
       ></TextField>
       <Flex
         justifyContent="space-between"

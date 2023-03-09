@@ -1,91 +1,83 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
 
 
-type EagerUsers = {
+type EagerUserTable = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Users, 'id'>;
+    identifier: ManagedIdentifier<UserTable, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly userName?: string | null;
   readonly iconUrl?: string | null;
-  readonly Sells?: (Sells | null)[] | null;
+  readonly currentAddress?: string | null;
+  readonly nickname?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyUsers = {
+type LazyUserTable = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Users, 'id'>;
+    identifier: ManagedIdentifier<UserTable, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly userName?: string | null;
   readonly iconUrl?: string | null;
-  readonly Sells: AsyncCollection<Sells>;
+  readonly currentAddress?: string | null;
+  readonly nickname?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type Users = LazyLoading extends LazyLoadingDisabled ? EagerUsers : LazyUsers
+export declare type UserTable = LazyLoading extends LazyLoadingDisabled ? EagerUserTable : LazyUserTable
 
-export declare const Users: (new (init: ModelInit<Users>) => Users) & {
-  copyOf(source: Users, mutator: (draft: MutableModel<Users>) => MutableModel<Users> | void): Users;
+export declare const UserTable: (new (init: ModelInit<UserTable>) => UserTable) & {
+  copyOf(source: UserTable, mutator: (draft: MutableModel<UserTable>) => MutableModel<UserTable> | void): UserTable;
 }
 
-type EagerSells = {
+type EagerSellTable = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Sells, 'id'>;
+    identifier: ManagedIdentifier<SellTable, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly goodsName?: string | null;
   readonly comment?: string | null;
-  readonly howPickup?: string | null;
   readonly PickupPlace?: string | null;
-  readonly price?: number | null;
-  readonly usernName?: string | null;
-  readonly createdBy?: string | null;
-  readonly imageUrl1: string;
+  readonly userName?: string | null;
+  readonly createdDate?: string | null;
+  readonly imageUrl: string;
+  readonly salesTerm?: string | null;
   readonly imageUrl2?: string | null;
-  readonly imageUrl3?: string | null;
-  readonly imageUrl4?: string | null;
-  readonly imageUrl5?: string | null;
-  readonly usersID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazySells = {
+type LazySellTable = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Sells, 'id'>;
+    identifier: ManagedIdentifier<SellTable, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly goodsName?: string | null;
   readonly comment?: string | null;
-  readonly howPickup?: string | null;
   readonly PickupPlace?: string | null;
-  readonly price?: number | null;
-  readonly usernName?: string | null;
-  readonly createdBy?: string | null;
-  readonly imageUrl1: string;
+  readonly userName?: string | null;
+  readonly createdDate?: string | null;
+  readonly imageUrl: string;
+  readonly salesTerm?: string | null;
   readonly imageUrl2?: string | null;
-  readonly imageUrl3?: string | null;
-  readonly imageUrl4?: string | null;
-  readonly imageUrl5?: string | null;
-  readonly usersID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type Sells = LazyLoading extends LazyLoadingDisabled ? EagerSells : LazySells
+export declare type SellTable = LazyLoading extends LazyLoadingDisabled ? EagerSellTable : LazySellTable
 
-export declare const Sells: (new (init: ModelInit<Sells>) => Sells) & {
-  copyOf(source: Sells, mutator: (draft: MutableModel<Sells>) => MutableModel<Sells> | void): Sells;
+export declare const SellTable: (new (init: ModelInit<SellTable>) => SellTable) & {
+  copyOf(source: SellTable, mutator: (draft: MutableModel<SellTable>) => MutableModel<SellTable> | void): SellTable;
 }

@@ -12,12 +12,12 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Text } from "@aws-amplify/ui-react";
 export default function Footer(props) {
-  const { overrides, ...rest } = props;
+  const { users, overrides, ...rest } = props;
   const searchOnClick = useNavigateAction({ type: "url", url: "./timeline" });
   const mapOnClick = useNavigateAction({ type: "url", url: "./map" });
   const postOnClick = useNavigateAction({ type: "url", url: "./post" });
   const chatOnClick = useNavigateAction({ type: "url", url: "./chat" });
-  const mypageOnClick = useNavigateAction({ type: "url", url: "./mypage" });
+  const mypageOnClick = useNavigateAction({ type: "url", url: users?.iconUrl });
   return (
     <Flex
       gap="19px"

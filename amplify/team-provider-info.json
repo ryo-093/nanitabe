@@ -10,6 +10,15 @@
       "StackName": "amplify-nanitabe-staging-100654",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:019408459152:stack/amplify-nanitabe-staging-100654/f5f01de0-b8e1-11ed-81c9-06b9e9dead55",
       "AmplifyAppId": "d1spfr9n6dhg3t"
+    },
+    "categories": {
+      "auth": {
+        "nanitabe352c65ba": {},
+        "nanitabe": {}
+      },
+      "api": {
+        "nanitabe": {}
+      }
     }
   }
 }

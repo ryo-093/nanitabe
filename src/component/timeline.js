@@ -1,5 +1,5 @@
 import {
-    TimelineCardCollection
+    TimelineCard2Collection
 } from './../ui-components';
 
 const ComponentB = () => {
@@ -7,7 +7,7 @@ const ComponentB = () => {
         <body>
             <div>
                 <h1>マイページ</h1>
-                <TimelineCardCollection alignItems="center"/>
+                <TimelineCard2Collection alignItems="center"/>
             </div>
         </body>
     )

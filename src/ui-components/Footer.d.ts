@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Users } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps, TextProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -17,6 +18,8 @@ export declare type FooterOverridesProps = {
     mypage?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type FooterProps = React.PropsWithChildren<Partial<FlexProps> & {
+    users?: Users;
+} & {
     overrides?: FooterOverridesProps | undefined | null;
 }>;
 export default function Footer(props: FooterProps): React.ReactElement;

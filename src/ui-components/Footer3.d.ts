@@ -18,6 +18,8 @@ export declare type Footer3OverridesProps = {
     mypage?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type Footer3Props = React.PropsWithChildren<Partial<FlexProps> & {
+    email?: String;
+} & {
     overrides?: Footer3OverridesProps | undefined | null;
 }>;
 export default function Footer3(props: Footer3Props): React.ReactElement;

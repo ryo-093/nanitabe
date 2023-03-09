@@ -1,13 +1,11 @@
 import {
-  Footer3
+  Footer4
 } from '../ui-components';
-
-import {Link } from 'react-router-dom';
 
 function mkFooter() {
   return (
     <footer className='footer' >
-      <Footer3 width={"100vw"}/>
+      <Footer4 width={"100vw"}/>
     </footer>
   );
 }

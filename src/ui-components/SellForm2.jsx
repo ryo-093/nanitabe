@@ -146,7 +146,7 @@ export default function SellForm2(props) {
       <TextField
         width="unset"
         height="unset"
-        label="金額"
+        label="販売期間"
         shrink="0"
         alignSelf="stretch"
         placeholder="Placeholder"

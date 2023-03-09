@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 import { DataStore } from '@aws-amplify/datastore';
-import { Sells } from './../models';
+import { SellTable } from './../models';
 
 import {useState, useEffect} from 'react';
 
@@ -17,7 +17,7 @@ const ComponentG = () => {
     const [list, setList] = useState([]);
 
     const fetchData = async() => {
-        const res = await DataStore.query(Sells, getSellId);
+        const res = await DataStore.query(SellTable, getSellId);
         setList(res)
         console.log(res)
     };
@@ -34,7 +34,7 @@ const ComponentG = () => {
                 <h1>￥{list.price}</h1>
             </header>
             <div className="image">
-                <img src={list.imageUrl1} style={{width: "60%"}}/>
+                <img src={list.imageUrl} style={{width: "60%"}}/>
             </div>
             <div className='detail'>
                 <h3>説明</h3>

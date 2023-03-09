@@ -8,16 +8,33 @@
 import * as React from "react";
 import {
   getOverrideProps,
+  useAuth,
   useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
 export default function Footer3(props) {
-  const { overrides, ...rest } = props;
-  const timelineOnClick = useNavigateAction({ type: "url", url: "./timeline" });
-  const mapOnClick = useNavigateAction({ type: "url", url: "./" });
-  const postOnClick = useNavigateAction({ type: "url", url: "./post" });
-  const chatOnClick = useNavigateAction({ type: "url", url: "./chat" });
-  const mypageOnClick = useNavigateAction({ type: "url", url: "./mypage" });
+  const { email, overrides, ...rest } = props;
+  const authAttributes = useAuth().user?.attributes ?? {};
+  const timelineOnClick = useNavigateAction({
+    type: "url",
+    url: `${"./timeline?name="}${authAttributes["nickname"]}`,
+  });
+  const mapOnClick = useNavigateAction({
+    type: "url",
+    url: `${"./?name="}${authAttributes["nickname"]}`,
+  });
+  const postOnClick = useNavigateAction({
+    type: "url",
+    url: `${"./post?name="}${authAttributes["nickname"]}`,
+  });
+  const chatOnClick = useNavigateAction({
+    type: "url",
+    url: `${"./chat?name="}${authAttributes["nickname"]}`,
+  });
+  const mypageOnClick = useNavigateAction({
+    type: "url",
+    url: `${"./mypage?name="}${""}`,
+  });
   return (
     <Flex
       gap="10px"

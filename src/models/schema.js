@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Users": {
-            "name": "Users",
+        "UserTable": {
+            "name": "UserTable",
             "fields": {
                 "id": {
                     "name": "id",
@@ -24,21 +24,19 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "Sells": {
-                    "name": "Sells",
-                    "isArray": true,
-                    "type": {
-                        "model": "Sells"
-                    },
+                "currentAddress": {
+                    "name": "currentAddress",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "usersID"
-                        ]
-                    }
+                    "attributes": []
+                },
+                "nickname": {
+                    "name": "nickname",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -58,7 +56,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Users",
+            "pluralName": "UserTables",
             "attributes": [
                 {
                     "type": "model",
@@ -82,8 +80,8 @@ export const schema = {
                 }
             ]
         },
-        "Sells": {
-            "name": "Sells",
+        "SellTable": {
+            "name": "SellTable",
             "fields": {
                 "id": {
                     "name": "id",
@@ -106,13 +104,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "howPickup": {
-                    "name": "howPickup",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "PickupPlace": {
                     "name": "PickupPlace",
                     "isArray": false,
@@ -120,32 +111,32 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "price": {
-                    "name": "price",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "usernName": {
-                    "name": "usernName",
+                "userName": {
+                    "name": "userName",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "createdBy": {
-                    "name": "createdBy",
+                "createdDate": {
+                    "name": "createdDate",
                     "isArray": false,
                     "type": "AWSDateTime",
                     "isRequired": false,
                     "attributes": []
                 },
-                "imageUrl1": {
-                    "name": "imageUrl1",
+                "imageUrl": {
+                    "name": "imageUrl",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "salesTerm": {
+                    "name": "salesTerm",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "imageUrl2": {
@@ -153,34 +144,6 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
-                },
-                "imageUrl3": {
-                    "name": "imageUrl3",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "imageUrl4": {
-                    "name": "imageUrl4",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "imageUrl5": {
-                    "name": "imageUrl5",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "usersID": {
-                    "name": "usersID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -201,20 +164,11 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Sells",
+            "pluralName": "SellTables",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byUsers",
-                        "fields": [
-                            "usersID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -238,5 +192,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "ebbfffb246f005bb1c195e5f08f82002"
+    "version": "f460f9115884723042d2a9ea41b21bbe"
 };
