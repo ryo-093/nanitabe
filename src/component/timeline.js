@@ -1,6 +1,7 @@
 import {
-    TimelineCard2Collection
+    TimelineCard2Collection,
 } from './../ui-components';
+import Footer from './../js/mkFooter';
 
 const ComponentB = () => {
     return (
@@ -9,6 +10,7 @@ const ComponentB = () => {
                 <h1>マイページ</h1>
                 <TimelineCard2Collection alignItems="center"/>
             </div>
+            <Footer />
         </body>
     )
 }

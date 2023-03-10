@@ -8,7 +8,9 @@ import ComponentD from "./component/post";
 import ComponentE from "./component/chat";
 import ComponentF from "./component/mypage";
 import ComponentG from "./component/detail";
-import Footer from './js/mkFooter';
+import ComponentH from "./component/invChat";
+import ComponentI from "./component/congratulations";
+// import Footer from './js/mkFooter';
 
 // ログイン機能
 import { Authenticator } from "@aws-amplify/ui-react";
@@ -29,8 +31,10 @@ function App() {
                 <Route path="chat" element={<ComponentE/>}/>
                 <Route path="mypage" element={<ComponentF/>}/>
                 <Route path="detail" element={<ComponentG/>}/>
+                <Route path="invchat" element={<ComponentH/>}/>
+                <Route path="congratulations" element={<ComponentI/>}/>
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
         </div>
       )}
     </Authenticator>

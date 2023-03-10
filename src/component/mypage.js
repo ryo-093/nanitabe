@@ -1,4 +1,5 @@
 // import { AmplifySignOut } from "@aws-amplify/ui-react";
+import Footer from './../js/mkFooter';
 
 const ComponentF = () => {
     return (
@@ -13,6 +14,7 @@ const ComponentF = () => {
                         </main>
                     )}
             </div>
+            <Footer />
         </body>
     )
 }

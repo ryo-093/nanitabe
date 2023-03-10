@@ -7,6 +7,8 @@ import { UserTable } from './../models';
 
 import {useState, useEffect} from 'react';
 
+import {getLatLng} from "https://cdn.geolonia.com/community-geocoder.js";
+
 function defCustomMarker(imageUrl){
     const customMarker = new L.Icon({
         shadowUrl: null,
@@ -23,26 +25,26 @@ const MapArea = () => {
     const [searchParams] = useSearchParams();
     const getNickname = searchParams.get("name");
 
-    console.log('Hello')
-    console.log(getNickname);
-
     const [list, setList] = useState([]);
+    const [userAddress, setUserAddress] = useState();
 
     const fetchData = async() => {
-        // const res = (await DataStore.query(UserTable)).filter(c => c.nickname === getNickname);
-        const res = (await DataStore.query(UserTable));
-        setList(res)
-        console.log(res)
+        const res = (await DataStore.query(UserTable)).filter(c => c.nickname === getNickname);
+        // const res = (await DataStore.query(UserTable));
+        setList(res[0]);
+        getLatLng(res[0].currentAddress, setUserAddress(res[0].currentAddress));
+        console.log("getting user info. success")
     };
 
     useEffect( ()=> {
         fetchData()
     }, []);
 
-    // if (document.getElementById('address').value) {
-    //     getLatLng(document.getElementById('address').value, (latlng) => {
-    //       map.setCenter(latlng)
-    //     })
+    console.log(userAddress)
+    // if (list.currentAddress) {
+        // getLatLng(document.getElementById('address').value, (latlng) => {
+        //   map.setCenter(latlng)
+        // })
     // }
     // とりあえず都庁
     const position = [35.689634, 139.692101]; 

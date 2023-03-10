@@ -10,7 +10,6 @@ export { default as StandardCard } from "./StandardCard";
 export { default as ActionCard } from "./ActionCard";
 export { default as HeroLayout4 } from "./HeroLayout4";
 export { default as FormCheckout } from "./FormCheckout";
-// export { default as TimelineCardCollection } from "./TimelineCardCollection";
 export { default as SocialPost } from "./SocialPost";
 export { default as MarketingPricing } from "./MarketingPricing";
 export { default as HeroLayout3 } from "./HeroLayout3";

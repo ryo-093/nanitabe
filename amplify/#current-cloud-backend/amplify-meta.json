@@ -23,11 +23,11 @@
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
               "description": "api key description"
-            }
+            },
+            "authenticationType": "API_KEY"
           }
         },
         "GraphQLAPIIdOutput": "4dixeiloanezzb6nomtzsb3qha",
@@ -36,7 +36,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-03-09T07:08:57.619Z",
+      "lastPushTimeStamp": "2023-03-09T07:46:03.290Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-nanitabe-staging-100654-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apinanitabe"
@@ -54,8 +54,8 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
           "EMAIL",
@@ -78,11 +78,12 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "nanitabe"
       },
-      "lastPushTimeStamp": "2023-03-09T07:08:57.559Z",
+      "lastPushTimeStamp": "2023-03-09T07:46:03.290Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-nanitabe-staging-100654-deployment/amplify-cfn-templates/auth/nanitabe-cloudformation-template.json",
         "logicalId": "authnanitabe"
-      }
+      },
+      "lastPushDirHash": "DbRS2HfU1ZAQ9I7D+UvQgNRODyw="
     }
   }
 }

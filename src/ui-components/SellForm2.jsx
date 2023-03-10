@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useDataStoreCreateAction,
+  useStateMutationAction,
+} from "@aws-amplify/ui-react/internal";
+import { SellTable } from "../models";
+import { schema } from "../models/schema";
 import {
   Button,
   Divider,
@@ -19,6 +25,23 @@ import {
 } from "@aws-amplify/ui-react";
 export default function SellForm2(props) {
   const { overrides, ...rest } = props;
+  const [
+    textFieldThreeNineEightThreeOneThreeOneOneValue,
+    setTextFieldThreeNineEightThreeOneThreeOneOneValue,
+  ] = useStateMutationAction("");
+  const chatButtonThreeNineEightThreeOneFourTwoOneOnClick =
+    useDataStoreCreateAction({
+      fields: {
+        goodsName: textFieldThreeNineEightThreeOneThreeOneOneValue,
+        comment: textFieldThreeNineEightThreeOneThreeOneOneValue,
+        PickupPlace: textFieldThreeNineEightThreeOneThreeOneOneValue,
+        userName: textFieldThreeNineEightThreeOneThreeOneOneValue,
+        createdDate: textFieldThreeNineEightThreeOneThreeOneOneValue,
+        imageUrl: textFieldThreeNineEightThreeOneThreeOneOneValue,
+      },
+      model: SellTable,
+      schema: schema,
+    });
   return (
     <Flex
       gap="24px"
@@ -102,6 +125,12 @@ export default function SellForm2(props) {
         isDisabled={false}
         labelHidden={false}
         variation="default"
+        value={textFieldThreeNineEightThreeOneThreeOneOneValue}
+        onChange={(event) => {
+          setTextFieldThreeNineEightThreeOneThreeOneOneValue(
+            event.target.value
+          );
+        }}
         {...getOverrideProps(overrides, "TextField39831311")}
       ></TextField>
       <TextField
@@ -215,6 +244,9 @@ export default function SellForm2(props) {
           isDisabled={false}
           variation="primary"
           children="チャットする"
+          onClick={() => {
+            chatButtonThreeNineEightThreeOneFourTwoOneOnClick();
+          }}
           {...getOverrideProps(overrides, "chatButton39831421")}
         ></Button>
       </Flex>

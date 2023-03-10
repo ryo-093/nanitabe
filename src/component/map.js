@@ -1,4 +1,5 @@
 import MapArea from "../js/mapArea";
+import Footer from './../js/mkFooter';
 
 const ComponentC = () => {
     return (
@@ -7,6 +8,7 @@ const ComponentC = () => {
                 <h1>マップ</h1>
                 <MapArea />
             </div>
+            <Footer />
         </body>
     )
 }
