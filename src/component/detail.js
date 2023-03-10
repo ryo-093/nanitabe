@@ -33,11 +33,6 @@ const ComponentG = () => {
 
     return (
         <body>
-            {/* <h1>詳細</h1> */}
-            {/* <header className="header">
-                <h3>{list.goodsName}</h3>
-                <h1>￥{list.price}</h1>
-            </header> */}
             <div className="image">
                 <img src={list.imageUrl} style={{width: "100%"}}/>
             </div>

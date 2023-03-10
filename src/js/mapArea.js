@@ -10,6 +10,8 @@ import { useState, useEffect } from 'react';
 
 import { getLatLng , getLatLngArray} from "./../js/api.js";
 
+import { createElement } from 'react';
+
 function defCustomMarker(imageUrl) {
     const customMarker = new L.Icon({
         shadowUrl: null,
@@ -22,6 +24,14 @@ function defCustomMarker(imageUrl) {
     return customMarker;
 }
 
+ function ATag(props) {
+    return createElement(
+        'a',
+        { href: "./detail?sellId=" + props.id },
+        "詳細を見る"
+    );
+    }
+
 const MapArea = () => {
     const [searchParams] = useSearchParams();
     const getNickname = searchParams.get("name");
@@ -31,36 +41,6 @@ const MapArea = () => {
     const [position, setPosition] = useState([35.689634, 139.692101]);
     // const [gPosition, setGPosition] = useState({"lat": 35.689634, "lng": 139.692101});
     const [gPosition, setGPosition] = useState([]);
-
-    // const fetchData = async () => {
-    //     const res = (await DataStore.query(UserTable)).filter(c => c.nickname === getNickname);
-    //     setList(res[0]);
-
-    //     getLatLng(res[0].currentAddress, (latlng) => {
-    //         setPosition([latlng.lat, latlng.lng])
-    //         console.log("getting user info. success")
-    //     });
-    // };
-
-    // const fetchGdata = async () => {
-    //     console.log('getting position info started')
-    //     const res = await DataStore.query(SellTable);
-    //     setGoods(res);
-
-    //     // console.log(res)
-
-    //     getLatLngArray(res, (latlng) => {
-    //         setGPosition(latlng)
-    //         console.log("getting position info. success")
-    //         },
-    //         (re) => console.log(re)
-    //         )
-    // };
-
-    // useEffect(() => {
-    //     fetchGdata()    //商品情報
-    //     fetchData()     //ユーザー情報
-    // }, []);
 
     useEffect(() => {
         // fetchGdata()    //商品情報
@@ -76,22 +56,36 @@ const MapArea = () => {
     
             console.log('getting position info started')
             const res = await DataStore.query(SellTable);
-            setGoods(res);
+            // setGoods(res);
     
             // console.log(res)  
-    
-            getLatLngArray(res, (latlng) => {
-                setGPosition(latlng)
-                // console.log(latlng)
-                // console.log(gPosition)
-                // console.log(latlng)
-                console.log("getting position info. success")
-                },
-                (re) => console.log(re)
-                )
+            // getLatLngArray(res, (latlng) => {
+            //     setGPosition(latlng)
+            //     // console.log(latlng)
+            //     // console.log(gPosition)
+            //     // console.log(latlng)
+            //     console.log("getting position info. success")
+            //     },
+            //     (re) => console.log(re)
+            //     )
+            let newRes = [];
+            for (let i = 0; i < res.length; i++) {
+                getLatLng(res[i].PickupPlace, (latlng) => {
+                    const tmp = {lat: latlng.lat, lng: latlng.lng};
+                    const tmp2 = {...res[i], ...tmp}
+                    newRes.push(tmp2);
+                    // console.log(newRes)
+                    // newRes.push = newRes
+                    // newRes[i] = newRes
+                    // console.log(newRes);
+                    setGoods(newRes)
+                    // setGPosition(newRes)
+                })
+                // console.log(res[i].PickupPlace)
+            }
         };
 
-        fetchData()     //ユーザー情報
+        fetchData()     
         console.log('実行されました')
     }, []);
 
@@ -106,10 +100,14 @@ const MapArea = () => {
     };
 
     // console.log(goods[0])
-    // console.log({gPosition})
+    console.log({goods}) 
 
     return (
-        <MapContainer center={position} zoom={16} scrollWheelZoom={false} style={MapContainerStyle}>
+        // <div>
+        //     {mkPin()}
+        // </div>
+        
+        <MapContainer center={position} zoom={15} scrollWheelZoom={false} style={MapContainerStyle}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -119,19 +117,22 @@ const MapArea = () => {
                     You're here!
                 </Popup>
             </Marker>
-            {goods.map((good, index) => (
-					<Marker key={good.id} position={[ gPosition[index].lat, gPosition[index].lng ]} icon={defCustomMarker(good.imageUrl)}>
-						<Popup position={[ gPosition[index].lat, gPosition[index].lng ]}>
-                    {/* // <Marker key={good.id} position={[35.689634, 139.692101]} icon={defCustomMarker(good.imageUrl)}>
-					// 	<Popup position={[35.689634, 139.692101]}> */}
+            {/* {goods.map((good, index) => ( */}
+            {goods.map((good) => (
+                    <Marker key={good.id} position={[ good.lat, good.lng ]} icon={defCustomMarker(good.imageUrl)}>
+						<Popup position={[ good.lat, good.lng ]}>
 							<div>
 								<h3>{good.goodsName}</h3>
                                 <p>{good.comment}</p>
-                                <a href="./detail">詳細を見る</a>
+                                {/* <a id="sendId" href="./detail">詳細を見る</a> */}
+                                {/* {Greeting(good.comment)} */}
+                                <ATag id={good.id} />
 							</div>
-						</Popup>
-					</Marker>
+
+					 	</Popup>
+					 </Marker>
 				))}
+            
         </MapContainer>
     );
 };

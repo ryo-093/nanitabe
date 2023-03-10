@@ -32,9 +32,12 @@ export const getLatLngArray = async(arrs, callback, errorCallback = () => {}) =>
                 //   console.log(json)
                 console.log(i)
                 reArr.push(json)
+                // console.log(reArr)
+                // reArr = [...reArr, ...json];
+                // console.log(reArr)
                 // callback(reArr)
                 if (i === (arrs.length - 1)){
-                    console.log(reArr)
+                    // console.log(reArr)
                     callback(reArr)
                 }
               } else {

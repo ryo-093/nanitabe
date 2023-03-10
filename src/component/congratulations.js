@@ -1,22 +1,36 @@
-import Footer from './../js/mkFooter';
 import { useNavigateAction } from "@aws-amplify/ui-react/internal";
+import { Auth } from 'aws-amplify'
+import {useState, useEffect} from 'react';
+
+import congimage from './../mock/congraturations.png' 
 
 const ComponentI = () => {
+    const [user, setUser] = useState([]);
+
+    const fetchData = async () => {
+        const res = await Auth.currentAuthenticatedUser()
+        setUser(res.attributes.nickname)
+    };
+
+    useEffect( ()=> {
+        fetchData()
+    }, [])
+
     const buttonOnClick = useNavigateAction({
         type: "url",
         // url: `${"./timeline"}`,
-        url: `${"./map"}`,
+        url: `${"./map?name="}${user}`,
       });
 
     return (
         <body>
-            <div>
-                <h1>出品が完了しました</h1>
+            <div className='cong'>
+                <img src={congimage}  />
+                <div class="button01" >
+                    <button onClick={() => {buttonOnClick();}}>もどる</button>
+                </div>
             </div>
-            <div class="button01">
-                <button onClick={() => {buttonOnClick();}}>もどる</button>
-            </div>
-            <Footer />
+            {/* <Footer /> */}
         </body>
     )
 }
